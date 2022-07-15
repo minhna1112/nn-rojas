@@ -1,5 +1,5 @@
-from turtle import forward
 import torch
+from utils.math import factorial
 
 class PowerLayer(torch.nn.Module):
     def __init__(self, n) -> None:
@@ -31,5 +31,13 @@ class TaylorNetwork(torch.nn.Module):
         z = self.first_layer(x - self.x_0) # z  = x - x_0
         z = self.power_layer(z)
         return self.last_layer(z)
+
+    def learn_analytically(self, x, y):
+        self.last_layer.bias.requires_grad_(False)
+        self.last_layer.bias.fill_
+        for i in range(1, self.n+1):
+            self.last_layer.weight = ...
         
 taylor = TaylorNetwork(x_0=0, n=4)
+
+torch.autograd.grad()
